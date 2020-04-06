@@ -39,13 +39,14 @@
             this.titleTxtBox = new System.Windows.Forms.TextBox();
             this.titleLabel = new System.Windows.Forms.Label();
             this.colorLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTxtBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // memoSaveBtn
             // 
             this.memoSaveBtn.CausesValidation = false;
-            this.memoSaveBtn.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.memoSaveBtn.Location = new System.Drawing.Point(3, 3);
             this.memoSaveBtn.Name = "memoSaveBtn";
             this.memoSaveBtn.Size = new System.Drawing.Size(119, 42);
@@ -80,7 +81,6 @@
             // 
             // memoDeleteBtn
             // 
-            this.memoDeleteBtn.DialogResult = System.Windows.Forms.DialogResult.No;
             this.memoDeleteBtn.Location = new System.Drawing.Point(253, 3);
             this.memoDeleteBtn.Name = "memoDeleteBtn";
             this.memoDeleteBtn.Size = new System.Drawing.Size(119, 42);
@@ -101,7 +101,7 @@
             this.tableLayoutPanel1.Controls.Add(this.memoCloseBtn, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.memoDeleteBtn, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.memoClearBtn, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 395);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 447);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -114,7 +114,7 @@
             this.colorComBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.colorComBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.colorComBox.FormattingEnabled = true;
-            this.colorComBox.Location = new System.Drawing.Point(112, 332);
+            this.colorComBox.Location = new System.Drawing.Point(112, 384);
             this.colorComBox.Name = "colorComBox";
             this.colorComBox.Size = new System.Drawing.Size(363, 26);
             this.colorComBox.TabIndex = 9;
@@ -122,7 +122,7 @@
             // 
             // contentTxtBox
             // 
-            this.contentTxtBox.Location = new System.Drawing.Point(112, 72);
+            this.contentTxtBox.Location = new System.Drawing.Point(112, 124);
             this.contentTxtBox.Multiline = true;
             this.contentTxtBox.Name = "contentTxtBox";
             this.contentTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -132,7 +132,7 @@
             // contentLabel
             // 
             this.contentLabel.AutoSize = true;
-            this.contentLabel.Location = new System.Drawing.Point(34, 75);
+            this.contentLabel.Location = new System.Drawing.Point(34, 127);
             this.contentLabel.Name = "contentLabel";
             this.contentLabel.Size = new System.Drawing.Size(37, 15);
             this.contentLabel.TabIndex = 2;
@@ -140,7 +140,7 @@
             // 
             // titleTxtBox
             // 
-            this.titleTxtBox.Location = new System.Drawing.Point(112, 25);
+            this.titleTxtBox.Location = new System.Drawing.Point(112, 77);
             this.titleTxtBox.Name = "titleTxtBox";
             this.titleTxtBox.Size = new System.Drawing.Size(363, 25);
             this.titleTxtBox.TabIndex = 1;
@@ -148,7 +148,7 @@
             // titleLabel
             // 
             this.titleLabel.AutoSize = true;
-            this.titleLabel.Location = new System.Drawing.Point(34, 31);
+            this.titleLabel.Location = new System.Drawing.Point(34, 83);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(37, 15);
             this.titleLabel.TabIndex = 0;
@@ -157,17 +157,35 @@
             // colorLabel
             // 
             this.colorLabel.AutoSize = true;
-            this.colorLabel.Location = new System.Drawing.Point(34, 335);
+            this.colorLabel.Location = new System.Drawing.Point(34, 387);
             this.colorLabel.Name = "colorLabel";
             this.colorLabel.Size = new System.Drawing.Size(37, 15);
             this.colorLabel.TabIndex = 10;
             this.colorLabel.Text = "색상";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 15);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "날짜";
+            // 
+            // dateTxtBox
+            // 
+            this.dateTxtBox.Location = new System.Drawing.Point(112, 26);
+            this.dateTxtBox.Name = "dateTxtBox";
+            this.dateTxtBox.Size = new System.Drawing.Size(363, 25);
+            this.dateTxtBox.TabIndex = 12;
+            // 
             // MemoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 455);
+            this.ClientSize = new System.Drawing.Size(524, 550);
+            this.Controls.Add(this.dateTxtBox);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.colorLabel);
             this.Controls.Add(this.colorComBox);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -176,6 +194,7 @@
             this.Controls.Add(this.titleTxtBox);
             this.Controls.Add(this.titleLabel);
             this.Name = "MemoForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "메모";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -195,5 +214,7 @@
         private System.Windows.Forms.TextBox titleTxtBox;
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label colorLabel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox dateTxtBox;
     }
 }

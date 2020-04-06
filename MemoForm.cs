@@ -33,12 +33,19 @@ namespace calender
             set { color = value; }
         }
 
-        public MemoForm(string title, string contents, string color)
+        public MemoForm(string title, string contents, string color, string isUpdate, string date)
         {
             InitializeComponent();
 
             titleTxtBox.Text = title;
             contentTxtBox.Text = contents;
+            dateTxtBox.Text = date;
+            dateTxtBox.Enabled = false;
+
+            if (isUpdate == "N")
+                memoDeleteBtn.Enabled = false;
+            else
+                memoDeleteBtn.Enabled = true;
 
             // color combobox 그리기
             ArrayList ColorList = new ArrayList();
@@ -66,16 +73,19 @@ namespace calender
 
         public void memoSaveBtn_Click(object sender, EventArgs e)
         {
+            titleTxtBox.Text = titleTxtBox.Text.Trim();
             if (titleTxtBox.Text == "")
             {
                 MessageBox.Show("제목을 입력하세요.", "오류", MessageBoxButtons.OK);
                 titleLabel.Focus();
+                this.DialogResult = DialogResult.None;
             }
-            else 
+            else
             {
                 TitleValue = titleTxtBox.Text;
                 ContentsValue = contentTxtBox.Text;
                 ColorValue = colorComBox.Text;
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
         }
@@ -84,9 +94,12 @@ namespace calender
         {
             if (MessageBox.Show("삭제 하시겠습니까?", "삭제", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                TitleValue = titleTxtBox.Text;
-                ContentsValue = contentTxtBox.Text;
+                this.DialogResult = DialogResult.No;
                 this.Close();
+            }
+            else 
+            {
+                this.DialogResult = DialogResult.None;
             }
         }
 

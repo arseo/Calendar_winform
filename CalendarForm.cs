@@ -65,10 +65,11 @@ namespace calender
             FlowLayoutPanel panel = (FlowLayoutPanel)sender;
             Control[] c = Controls.Find("label" + panel.Name.Substring(15), true);
             string day = c[0].Text;
+            string date = yearLabel.Text + "-" + monthLabel.Text + "-" + day;
 
             if (day != "")      // 날 없는 칸 선택 못하게
             {
-                MemoForm memoForm = new MemoForm("", "", Color.White.ToString());
+                MemoForm memoForm = new MemoForm("", "", Color.White.ToString(), "N", date);
                 if (memoForm.ShowDialog() == DialogResult.OK)       // 메모 저장
                 {
                     TitleValue = memoForm.TitleValue;
@@ -83,7 +84,6 @@ namespace calender
                     STrans = conn.BeginTransaction();
                     cmd.Transaction = STrans;  //커맨드에 트랜젝션 명시
 
-                    string date = yearLabel.Text + "-" + monthLabel.Text + "-" + day;
                     cmd.CommandText = "INSERT INTO memo VALUES(MEMO_ID_SEQUENCE.NEXTVAL, '" + TitleValue + "', '" + ContentsValue + "', '" + date + "', '" + ColorValue + "')";
                     cmd.ExecuteNonQuery();
                     cmd.Transaction.Commit();   //커밋
@@ -137,7 +137,7 @@ namespace calender
             dbClose(conn);
 
 
-            MemoForm memoForm = new MemoForm(title, contents, color.ToString());
+            MemoForm memoForm = new MemoForm(title, contents, color.ToString(), "Y", date);
             DialogResult result = memoForm.ShowDialog();
             if (result == DialogResult.OK)      //메모 수정
             {
@@ -164,8 +164,6 @@ namespace calender
             }
             else if (result == DialogResult.No)       // 메모 삭제
             {
-                TitleValue = memoForm.TitleValue;
-
                 conn = dbConnect();
                 cmd = new OracleCommand();
                 cmd.Connection = conn;
@@ -173,7 +171,7 @@ namespace calender
                 OracleTransaction STrans = null;  //오라클 트랜젝션
                 STrans = conn.BeginTransaction();
                 cmd.Transaction = STrans;  //커맨드에 트랜젝션 명시
-                cmd.CommandText = "DELETE FROM memo WHERE title = '" + TitleValue + "' AND memo_date = '" + date + "'";
+                cmd.CommandText = "DELETE FROM memo WHERE title = '" + title + "' AND memo_date = '" + date + "'";
                 cmd.ExecuteNonQuery();
                 cmd.Transaction.Commit();   //커밋
 
@@ -181,6 +179,7 @@ namespace calender
 
                 parent.Controls.Remove(titleLabel);
                 titleLabel.Dispose();
+                return;
             }
 
         }
@@ -478,5 +477,6 @@ namespace calender
             }
             return controlList;
         }
+
     }
 }
